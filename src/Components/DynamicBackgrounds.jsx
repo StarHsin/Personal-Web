@@ -14,7 +14,7 @@ export default function DynamicBackgrounds() {
     () => ({
       background: {
         color: {
-          value: "#2d3748",
+          value: "#1e293b", //slate-900
         },
       },
       fpsLimit: 120,

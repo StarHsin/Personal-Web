@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import DynamicBackgrounds from './DynamicBackgrounds'
+import DynamicBackgrounds from './Components/DynamicBackgrounds'
+import StickyNavbar from './Components/StickyNavbar' 
 
 export default function App() {
   
@@ -11,6 +12,7 @@ export default function App() {
         <div className='text-[3.5rem] leading-none font-bold text-white'>我是李慧芯</div>
         <div className='font-bold text-white'>目前還在開發中造成不便請見諒。</div>
       </div>
+      <StickyNavbar />
       <DynamicBackgrounds />
     </div>
       
