@@ -61,7 +61,7 @@ export default function DynamicBackgrounds() {
             default: "bounce", // 粒子會在畫面邊界反彈
           },
           random: false, // 粒子移動方向不隨機
-          speed: 5, // 粒子移動速度
+          speed: 2, // 粒子移動速度
           straight: false, // 粒子移動不會直線前進
         },
         number: {
