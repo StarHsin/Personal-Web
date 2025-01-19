@@ -92,6 +92,8 @@ export default function DynamicBackgrounds() {
   );
 
   return (
+    <div className="absolute w-full h-full -z-10">
       <Particles options={options} />
+    </div>
     );
 }
