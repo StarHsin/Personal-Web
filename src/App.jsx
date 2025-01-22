@@ -8,7 +8,7 @@ export default function App() {
   
   return (
     <>
-      <Router basename="/<repository-name>">
+      <Router basename="/<Personal-Web>">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path='/awards' element={<DynamicBackgrounds />} />
