@@ -4,14 +4,23 @@ import { GrCertificate } from "react-icons/gr";
 import { PiNotePencilBold } from "react-icons/pi";
 import { FaChevronDown, FaRegFileAlt } from "react-icons/fa";
 import { FiActivity } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 export default function SideBar({isOpen, toggleDrawer}){
-  const [dropDown, setDropDown] = useState(false)
+  const [dropDown, setDropDown] = useState(false);
+  const navigate = useNavigate();
 
   const toggleDropDown = () => {
     setDropDown(!dropDown);
-    console.log("dropDown",dropDown)
   };
+
+  const handleNavigateToAwards = () => {
+    navigate("/awards"); 
+  };
+
+  const handleActivity = () => {
+    navigate("/Activity")
+  }
 
   return (
     <div>
@@ -33,6 +42,7 @@ export default function SideBar({isOpen, toggleDrawer}){
           <ul className="space-y-2 font-medium">
             <li>
               <button
+                onClick={handleNavigateToAwards}
                 className="flex items-center w-full p-2 text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-100"
               >
                 <GrCertificate className="w-5 h-5"/>
@@ -82,6 +92,7 @@ export default function SideBar({isOpen, toggleDrawer}){
             </li>
             <li>
               <button
+                onClick={handleActivity}
                 className="flex items-center w-full p-2 text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-100"
               >
                <FiActivity className="w-5 h-5"/> 
