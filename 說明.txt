@@ -9,3 +9,33 @@
 頁腳
 旋轉木馬
 畫廊
+
+react在githut page部署  https://www.spatialgeolab.com/github-react-depoly/
+1.安裝gh-pages:bun add -d gh-pages
+2.package.json增加:
+    "name": "web",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+//    "homepage": "https://StarHsin.github.io/Personal-Web",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint .",
+        "preview": "vite preview",
+//        "predeploy": "bun run build",  
+//        "deploy": "gh-pages -d dist"  
+  },
+3.vite.congig.js增加:
+    export default defineConfig({
+        plugins: [react()],
+//        base: '/Personal-Web/', 
+    })
+4.建構&部署:
+    bun run predeploy    // 執行構建
+    bun run deploy       // 執行部署到 GitHub Pages
+    此時github上會顯示gh-pags分支
+5.點擊專案裡的setting-pages:
+    選分支gh-pags，root後儲存
+    注意!! 專案須為公共，可在general裡的最下面設定
+6.進入生成的網址就完成了
