@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim"; 
 
-export default function DynamicBackgrounds() {
+export default function DynamicBackgrounds({height}) {
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -92,7 +92,7 @@ export default function DynamicBackgrounds() {
   );
 
   return (
-    <div className="absolute w-full h-full -z-10">
+    <div className="absolute w-full -z-10" style={{ height: `${height}px` }}>
       <Particles options={options} />
     </div>
     );

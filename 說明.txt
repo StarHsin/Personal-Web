@@ -9,6 +9,7 @@
 頁腳
 旋轉木馬
 畫廊
+導覽列 Breadcrumb
 
 react在githut page部署  https://www.spatialgeolab.com/github-react-depoly/
 1.安裝gh-pages:bun add -d gh-pages
@@ -39,3 +40,8 @@ react在githut page部署  https://www.spatialgeolab.com/github-react-depoly/
     選分支gh-pags，root後儲存
     注意!! 專案須為公共，可在general裡的最下面設定
 6.進入生成的網址就完成了
+
+
+2025/01/19 動態背景
+2025/01/20 頂層欄側邊欄
+2025/01/22 github pages部署

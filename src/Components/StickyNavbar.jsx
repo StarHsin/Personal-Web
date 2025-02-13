@@ -13,15 +13,14 @@ export default function StickyNavbar() {
       };
     
      return (
-        <nav className="bg-transparent fixed w-full z-20 top-0 start-0 border-b-2 border-gray-500">
-            <div className="flex items-center justify-between p-4">
+        <nav className="fixed w-full top-0 start-0 border-b-2 border-gray-500">
+            <div className="flex bg-slate-800 items-center justify-between p-4">
               <button
                 onClick={toggleDrawer}
                 className="flex items-center justify-center text-white bg-transparent hover:bg-gray-500 rounded-lg w-10 h-10 border-2 border-gray-500 "
               >
                 <AiOutlineMenu className="w-8 h-8"/>
                 </button>
-                <Breadcrumb />
                 <button className="w-10 h-10 flex items-center justify-center overflow-hidden bg-white rounded-full">
                     <FaUser className="w-10 h-10 text-gray-500 relative top-1" />
                 </button>
