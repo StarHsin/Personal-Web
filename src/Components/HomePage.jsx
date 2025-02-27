@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import DynamicBackgrounds from './DynamicBackgrounds'
 import StickyNavbar from './StickyNavbar' 
-import Schedule from "./Calendar";
 
 export default function HomePage() {
     const [height, setHeight] = useState(window.innerHeight);
