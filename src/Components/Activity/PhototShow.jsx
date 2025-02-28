@@ -1,52 +1,56 @@
 import React, { useEffect, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import { FaChevronRight, FaChevronLeft, AiOutlineClose } from "../icon";
 
-const FOLDER_ID = "1f9VHxWiUkwOgdHOEhUG5MkfzR44bdrLI";
-const API_KEY = "AIzaSyAEHtvd1FDsgA8yfZXSL-PxOAb-U-mEmWs"; 
+const API_KEY = import.meta.env.VITE_API_KEY;
 
-export default function PhotoShow() {
+export default function PhotoShow({ folderId }) {
     const [groupedImages, setGroupedImages] = useState({});
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [flatImages, setFlatImages] = useState([]); // 存放所有圖片的陣列
 
     useEffect(() => {
-        fetch(`https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name)`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.files) {
-                    const imageUrls = data.files.map(file => ({
-                        url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`,
-                        id: file.id
-                    }));
-
-                    // 取得圖片尺寸後分類
-                    const imageGroups = {};
-                    let loadedCount = 0;
-                    const allImages = [];
-
-                    imageUrls.forEach(image => {
-                        const img = new Image();
-                        img.src = image.url;
-                        img.onload = () => {
-                            const sizeKey = `${img.naturalWidth}x${img.naturalHeight}`;
-                            if (!imageGroups[sizeKey]) {
-                                imageGroups[sizeKey] = [];
-                            }
-                            imageGroups[sizeKey].push(image.url);
-                            allImages.push(image.url);
-
-                            loadedCount++;
-                            if (loadedCount === imageUrls.length) {
-                                setGroupedImages(imageGroups);
-                                setFlatImages(allImages);
-                            }
-                        };
-                    });
-                }
-            })
-            .catch(error => console.error("Error fetching images:", error));
-    }, []);
+        setTimeout(() => { // 🔹 加入 500ms 延遲，避免 API 過載
+            fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${API_KEY}&fields=files(id,name)`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.files) {
+                        const imageUrls = data.files.map(file => ({
+                            url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`,
+                            id: file.id
+                        }));
+    
+                        // 取得圖片尺寸後分類
+                        const imageGroups = {};
+                        let loadedCount = 0;
+                        const allImages = [];
+    
+                        imageUrls.forEach(image => {
+                            const img = new Image();
+                            img.src = image.url;
+                            img.onload = () => {
+                                const sizeKey = `${img.naturalWidth}x${img.naturalHeight}`;
+                                if (!imageGroups[sizeKey]) {
+                                    imageGroups[sizeKey] = [];
+                                }
+                                imageGroups[sizeKey].push(image.url);
+                                allImages.push(image.url);
+    
+                                loadedCount++;
+                                if (loadedCount === imageUrls.length) {
+                                    setGroupedImages(imageGroups);
+                                    setFlatImages(allImages);
+                                }
+                            };
+                        });
+                    }
+                })
+                .catch(error => console.error("Error fetching images:", error));
+        }, 500); // ⏳ 500ms 延遲
+    }, [folderId]); // 依賴 `folderId`，當資料夾變更時重新執行
+    
 
     // 打開 Lightbox 並設定當前圖片索引
     const openLightbox = (index) => {
@@ -76,12 +80,13 @@ export default function PhotoShow() {
                 <div key={idx} className="mb-6">
                     <div className="grid grid-cols-5 gap-4">
                         {groupedImages[sizeKey].map((src, index) => (
-                            <img
+                            <LazyLoadImage
                                 key={index}
                                 className="w-full h-auto rounded-lg cursor-pointer"
                                 src={src}
                                 alt=""
-                                onClick={() => openLightbox(flatImages.indexOf(src))} // 取得該圖片在 flatImages 中的索引
+                                effect="blur" // 🚀 懶加載，載入時先模糊
+                                onClick={() => openLightbox(flatImages.indexOf(src))}
                             />
                         ))}
                     </div>
@@ -107,11 +112,12 @@ export default function PhotoShow() {
                         <FaChevronLeft />
                     </button>
 
-                    {/* 圖片 */}
-                    <img
+                    {/* 圖片 (加入 LazyLoadImage) */}
+                    <LazyLoadImage
                         src={flatImages[currentImageIndex]}
                         alt=""
                         className="max-w-full max-h-[80vh] rounded-lg shadow-lg"
+                        effect="blur" // 🔥 讓燈箱圖片也支援懶加載
                     />
 
                     {/* 右箭頭 */}
