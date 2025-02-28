@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FaUser } from "react-icons/fa6";
-import { AiOutlineMenu } from "react-icons/ai";
+import { FaUser, AiOutlineMenu} from "./icon";
 import SideBar from './SideBar'
 import Breadcrumb from "./Breadcrumb";
 

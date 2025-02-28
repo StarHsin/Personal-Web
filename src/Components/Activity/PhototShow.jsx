@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { FaChevronRight, FaChevronLeft, AiOutlineClose } from "../icon";
 
 const FOLDER_ID = "1f9VHxWiUkwOgdHOEhUG5MkfzR44bdrLI";
 const API_KEY = "AIzaSyAEHtvd1FDsgA8yfZXSL-PxOAb-U-mEmWs"; 
-
-
 
 export default function PhotoShow() {
     const [groupedImages, setGroupedImages] = useState({});
@@ -97,7 +96,7 @@ export default function PhotoShow() {
                         className="absolute top-5 right-5 text-white text-3xl font-bold"
                         onClick={closeLightbox}
                     >
-                        ✕
+                        <AiOutlineClose />
                     </button>
 
                     {/* 左箭頭 */}
@@ -105,7 +104,7 @@ export default function PhotoShow() {
                         className="absolute left-5 text-white text-5xl"
                         onClick={prevImage}
                     >
-                        ❮
+                        <FaChevronLeft />
                     </button>
 
                     {/* 圖片 */}
@@ -120,7 +119,7 @@ export default function PhotoShow() {
                         className="absolute right-5 text-white text-5xl"
                         onClick={nextImage}
                     >
-                        ❯
+                        <FaChevronRight />
                     </button>
                 </div>
             )}

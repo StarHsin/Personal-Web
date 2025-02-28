@@ -1,5 +1,4 @@
-import { IoMdHome } from "react-icons/io";
-import { FaChevronRight } from "react-icons/fa";
+import { IoMdHome, FaChevronRight} from "./icon";
 
 export default function Breadcrumb() {
     return(
