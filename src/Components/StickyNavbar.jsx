@@ -12,7 +12,7 @@ export default function StickyNavbar() {
       };
     
      return (
-        <nav className="fixed w-full top-0 start-0 border-b-2 border-gray-500">
+        <nav className="fixed w-full top-0 start-0 border-b-2 border-gray-500 z-50">
             <div className="flex bg-slate-800 items-center justify-between p-4">
               <button
                 onClick={toggleDrawer}

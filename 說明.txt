@@ -45,3 +45,15 @@ react在githut page部署  https://www.spatialgeolab.com/github-react-depoly/
 2025/01/19 動態背景
 2025/01/20 頂層欄側邊欄
 2025/01/22 github pages部署
+
+
+git branch -D gh-pages
+git push origin --delete gh-pages
+bun run deploy
+
+
+git checkout --orphan gh-pages  # 創建新的 gh-pages 分支
+git reset --hard  # 清除分支上的所有文件
+git commit --allow-empty -m "Initialize gh-pages branch"
+git push origin gh-pages  # 推送到 GitHub 遠端
+git checkout main  # 切回 main 分支

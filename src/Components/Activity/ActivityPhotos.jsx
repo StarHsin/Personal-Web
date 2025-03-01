@@ -8,7 +8,7 @@ export default function ActivityPhotos() {
     const folderId = location.state?.folderId || "未選擇活動";  // 預設值
     
     return(
-        <nav className="absolute w-full pt-20 bg-slate-800">
+        <nav className="absolute w-full min-h-screen pt-20 bg-slate-800">
             <StickyNavbar />
             <div
                 className="flex flex-col justify-center items-center border-4 border-transparent rounded-lg bg-transparent">

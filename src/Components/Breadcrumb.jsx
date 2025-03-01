@@ -1,14 +1,23 @@
-import { IoMdHome, FaChevronRight} from "./icon";
+import { MdHome, FaChevronRight} from "./icon";
+import { useNavigate } from "react-router-dom";
 
 export default function Breadcrumb() {
+    const navigate = useNavigate();
+
+    const handleGoHome = () => {
+        navigate("/")
+    }
+
     return(
         <div className="flex">
             <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li className="inline-flex items-center">
-                    <div className="inline-flex items-center text-sm font-medium text-white hover:text-blue-600">
-                        <IoMdHome className="w-5 h-5" />
-                        Home
-                    </div>
+                    <button
+                        onClick={handleGoHome} 
+                        className="inline-flex items-center text-sm font-medium text-white hover:text-blue-600">
+                        <MdHome className="w-5 h-5" />
+                        首頁
+                    </button>
                 </li>
                 <li>
                     <div className="flex items-center">
