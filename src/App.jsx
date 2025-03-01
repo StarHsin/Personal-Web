@@ -12,9 +12,9 @@ export default function App() {
       <Router basename="/Personal-Web">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path='/awards' element={<DynamicBackgrounds />} />
-          <Route path='/Activity' element={<ActivityPage />} />
-          <Route path='/Photos' element={<ActivityPhotos />} />
+          <Route path="/awards" element={<DynamicBackgrounds />} />
+          <Route path="/Activity" element={<ActivityPage />} />
+          <Route path="/Activity/Photos" element={<ActivityPhotos />} /> 
         </Routes>
       </Router>
       

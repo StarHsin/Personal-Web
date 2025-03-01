@@ -8,7 +8,7 @@ export default function ActivityPage() {
     const navigate = useNavigate();
 
     const handlePhotos = (folderName, folderId) => {
-        navigate("/Photos", { state: { folderName, folderId } });  // 傳遞 folderName 到 /Photos
+        navigate("/Activity/Photos", { state: { folderName, folderId } });  // 傳遞 folderName 到 /Photos
     };
 
     return (
